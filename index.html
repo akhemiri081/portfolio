@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Khemiri — Étudiant en Informatique</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --white: #ffffff;
+    --ink: #111111;
+    --muted: #888880;
+    --sand: #d4c9b0;
+    --sand-light: #ede8dc;
+    --border: #e2ddd3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 5vw;
+    background: rgba(247,245,240,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 1.1rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 10rem 5vw 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: end;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-left { grid-column: 1; grid-row: 1; align-self: start; }
+
+  .hero-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeUp 0.8s 0.1s ease forwards;
+  }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--sand); }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.95; letter-spacing: -0.03em;
+    opacity: 0; animation: fadeUp 0.8s 0.25s ease forwards;
+  }
+  .hero-name em { font-style: italic; font-weight: 400; color: var(--muted); }
+
+  .hero-right {
+    grid-column: 2; grid-row: 1 / 3;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: flex-end;
+    padding-left: 4rem; padding-bottom: 0.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.45s ease forwards;
+  }
+  .hero-badge {
+    writing-mode: vertical-rl;
+    font-size: 0.63rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); padding: 1.5rem 0.8rem;
+    border: 1px solid var(--border); border-radius: 2px; margin-bottom: 2rem;
+  }
+  .hero-intro {
+    max-width: 300px; text-align: right;
+    font-size: 0.92rem; line-height: 1.85; color: var(--muted);
+  }
+  .hero-intro strong { color: var(--ink); font-weight: 500; }
+
+  .hero-bottom {
+    grid-column: 1; grid-row: 2;
+    display: flex; align-items: center; gap: 3rem; padding-top: 4rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards;
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+  .hero-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em;
+  }
+  .hero-stat .lbl {
+    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .hero-divider { width: 1px; height: 44px; background: var(--border); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 5vw; border-bottom: 1px solid var(--border); }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--sand);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: -0.02em; line-height: 1.15;
+  }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; }
+  .tl-item {
+    display: grid; grid-template-columns: 200px 1px 1fr;
+    gap: 0 3rem; padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .tl-item.visible { opacity: 1; transform: translateY(0); }
+  .tl-date {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); padding-top: 0.2rem; line-height: 1.7;
+  }
+  .tl-line { background: var(--border); position: relative; }
+  .tl-line::before {
+    content: ''; position: absolute; top: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid var(--ink); background: var(--bg);
+  }
+  .tl-content { padding-left: 1rem; }
+  .tl-role {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; margin-bottom: 0.25rem;
+  }
+  .tl-company {
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.8rem;
+  }
+  .tl-desc { font-size: 0.88rem; line-height: 1.8; color: var(--muted); max-width: 520px; }
+
+  /* FORMATION */
+  .edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .edu-card {
+    background: var(--white); padding: 2.5rem;
+    position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .edu-card.visible { opacity: 1; transform: translateY(0); }
+  .edu-card:first-child { border-right: 1px solid var(--border); }
+  .edu-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--sand); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .edu-card:hover::after { transform: scaleX(1); }
+  .edu-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-weight: 900; font-style: italic;
+    color: var(--sand-light); line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.04em;
+  }
+  .edu-year {
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem;
+  }
+  .edu-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em;
+    line-height: 1.3; margin-bottom: 0.3rem;
+  }
+  .edu-school { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.4rem; }
+  .edu-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .edu-tag {
+    font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1px solid var(--border); border-radius: 2px;
+    padding: 0.22rem 0.65rem; color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .edu-tag:hover { border-color: var(--sand); color: var(--ink); }
+
+  /* COMPÉTENCES */
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .skills-col h3 {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+  }
+  .tech-list { list-style: none; }
+  .tech-list li {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.88rem; transition: padding-left 0.2s;
+  }
+  .tech-list li:hover { padding-left: 0.4rem; }
+  .dot-group { display: flex; gap: 4px; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sand-light); border: 1px solid var(--sand); }
+  .dot.filled { background: var(--ink); border-color: var(--ink); }
+
+  .soft-list { list-style: none; }
+  .soft-list li {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+  }
+  .soft-list li::before { content: '—'; color: var(--sand); font-size: 0.75rem; flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05; letter-spacing: -0.03em;
+  }
+  .contact-heading em { font-style: italic; font-weight: 400; color: var(--muted); }
+  .contact-list { list-style: none; }
+  .contact-list li a,
+  .contact-list li > div {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.3rem 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--ink); font-size: 0.9rem;
+    transition: padding-right 0.2s;
+  }
+  .contact-list li a:hover { padding-right: 0.5rem; }
+  .c-label {
+    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); display: block; margin-bottom: 0.2rem;
+  }
+  .c-arrow { color: var(--muted); transition: transform 0.2s, color 0.2s; }
+  .contact-list li a:hover .c-arrow { transform: translateX(4px); color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    padding: 1.8rem 5vw; background: var(--white);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  footer .f-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 0.85rem; color: var(--ink); letter-spacing: -0.01em;
+    text-transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
+    .hero-right { grid-column: 1; grid-row: 2; align-items: flex-start; padding-left: 0; padding-top: 2rem; }
+    .hero-badge { writing-mode: horizontal-tb; }
+    .hero-intro { text-align: left; }
+    .hero-bottom { grid-row: 3; }
+    section { padding: 4rem 1.5rem; }
+    .tl-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .tl-line { display: none; }
+    .edu-row, .skills-layout, .contact-wrap { grid-template-columns: 1fr; }
+    .edu-card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">MK</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio · 2025</p>
+    <h1 class="hero-name">Mohamed<br><em>Khemiri</em></h1>
+  </div>
+
+  <div class="hero-right">
+    <span class="hero-badge">Étudiant en informatique</span>
+    <p class="hero-intro">
+      Actuellement en <strong>2e année de BTS SIO</strong> option SISR, spécialisé en <strong>administration réseau</strong> et systèmes.<br>Basé à Lucé (28) · Permis B.
+    </p>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-stat">
+      <span class="num" style="font-size:1.5rem;">27 jan. 2006</span>
+      <span class="lbl">Date de naissance</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <span class="num">3</span>
+      <span class="lbl">Expériences</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <span class="num">BTS</span>
+      <span class="lbl">SIO · SISR</span>
+    </div>
+  </div>
+</div>
+
+<!-- EXPÉRIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Expériences professionnelles</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Janv. – Févr. 2026<br>8 semaines</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-role">Informaticien</p>
+        <p class="tl-company">Xtrem Pro</p>
+        <p class="tl-desc">Stage du 5 janvier au 27 février 2026 en tant qu'informaticien au sein de la société Xtrem Pro.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Août 2025<br>Intérim</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-role">Intérimaire</p>
+        <p class="tl-company">Proman Intérim · Lucé</p>
+        <p class="tl-desc">Mission en intérim au sein de la société Proman Intérim à Lucé.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Juin – Juillet 2025<br>5 semaines</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-role">Administrateur réseau</p>
+        <p class="tl-company">SNCF · Gare Saint-Lazare, Paris</p>
+        <p class="tl-desc">Stage en administration réseau dans l'une des plus grandes gares ferroviaires d'Europe. Immersion dans un environnement professionnel et technique exigeant.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Juil. – Août 2024<br>6 semaines</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-role">Employé polyvalent</p>
+        <p class="tl-company">EDIX · Chartres</p>
+        <p class="tl-desc">Poste saisonnier polyvalent. Adaptabilité, rigueur et sens du travail en équipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section id="formation" style="background: var(--white);">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Formation</h2>
+  </div>
+  <div class="edu-row">
+    <div class="edu-card">
+      <p class="edu-num">01</p>
+      <p class="edu-year">Sept. 2024 – Juin 2026</p>
+      <h3 class="edu-title">BTS SIO — Option SISR</h3>
+      <p class="edu-school">Lycée Fulbert · Chartres</p>
+      <div class="edu-tags">
+        <span class="edu-tag">Active Directory</span>
+        <span class="edu-tag">Windows Server</span>
+        <span class="edu-tag">GLPI</span>
+        <span class="edu-tag">Réseau</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <p class="edu-num">02</p>
+      <p class="edu-year">Sept. 2021 – Juin 2024</p>
+      <h3 class="edu-title">Baccalauréat STI2D — Option SIN</h3>
+      <p class="edu-school">Lycée Jehan de Beauce · Chartres</p>
+      <div class="edu-tags">
+        <span class="edu-tag">Sciences de l'Ingénieur</span>
+        <span class="edu-tag">Numérique</span>
+        <span class="edu-tag">Technologie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Compétences</h2>
+  </div>
+  <div class="skills-layout">
+    <div class="skills-col">
+      <h3>Compétences techniques</h3>
+      <ul class="tech-list">
+        <li>Windows Server / AD <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></li>
+        <li>Cisco — routeur, switch, VLAN <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></li>
+        <li>DHCP · DNS · ADDS · GPO <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></li>
+        <li>Debian / Linux <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></li>
+        <li>GLPI <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></li>
+        <li>Cybersécurité (bases) <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></li>
+        <li>Hardware / Montage PC <div class="dot-group"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></li>
+      </ul>
+    </div>
+    <div class="skills-col">
+      <h3>Langues</h3>
+      <ul class="soft-list">
+        <li>Français — natif</li>
+        <li>Anglais technique</li>
+        <li>Espagnol — niveau B1</li>
+      </ul>
+      <div style="height:2rem"></div>
+      <h3>Personnalité</h3>
+      <ul class="soft-list">
+        <li>Curieux & autonome</li>
+        <li>À l'écoute</li>
+        <li>Ponctuel & fiable</li>
+        <li>Déterminé</li>
+        <li>Respectueux</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--white);">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-wrap">
+    <h2 class="contact-heading">Travaillons<br><em>ensemble.</em></h2>
+    <ul class="contact-list">
+      <li>
+        <a href="mailto:akhemiri081@gmail.com">
+          <div><span class="c-label">Email</span>akhemiri081@gmail.com</div>
+          <span class="c-arrow">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="tel:0769048147">
+          <div><span class="c-label">Téléphone</span>07 69 04 81 47</div>
+          <span class="c-arrow">→</span>
+        </a>
+      </li>
+      <li>
+        <div>
+          <div><span class="c-label">Localisation</span>Lucé, Eure-et-Loir (28) · Permis B</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p class="f-name">Mohamed Khemiri</p>
+  <p>BTS SIO · SISR</p>
+  <p>© 2025</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        const d = parseInt(e.target.dataset.delay || 0);
+        setTimeout(() => e.target.classList.add('visible'), d);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.tl-item').forEach((el, i) => { el.dataset.delay = i * 120; obs.observe(el); });
+  document.querySelectorAll('.edu-card').forEach((el, i) => { el.dataset.delay = i * 140; obs.observe(el); });
+
+  // Nav active
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--ink)' : ''; });
+  });
+</script>
+</body>
+</html>
