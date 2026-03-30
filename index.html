@@ -1,9 +1,5 @@
 https://akhemiri081.github.io/portfolio/
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,21 +12,22 @@ https://akhemiri081.github.io/portfolio/
     --bg: #f7f5f0;
     --white: #ffffff;
     --ink: #111111;
-    --muted: #888880;
-    --sand: #d4c9b0;
+    --muted: #555550;        /* était #888880 — bien plus lisible */
+    --sand: #b8a98a;         /* un peu plus foncé pour meilleur contraste */
     --sand-light: #ede8dc;
-    --border: #e2ddd3;
+    --border: #d0c9bc;       /* légèrement plus foncé */
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: 17px; } /* base légèrement plus grande */
 
   body {
     background: var(--bg);
     color: var(--ink);
     font-family: 'Jost', sans-serif;
-    font-weight: 300;
+    font-weight: 400;        /* était 300, maintenant 400 pour meilleure lisibilité */
     overflow-x: hidden;
+    line-height: 1.6;
   }
 
   /* NAV */
@@ -38,19 +35,19 @@ https://akhemiri081.github.io/portfolio/
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.4rem 5vw;
-    background: rgba(247,245,240,0.9);
+    background: rgba(247,245,240,0.95);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
     font-family: 'Playfair Display', serif;
-    font-weight: 900; font-size: 1.1rem;
+    font-weight: 900; font-size: 1.2rem;
     color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
   }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none; transition: color 0.2s;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s; font-weight: 500;
   }
   .nav-links a:hover { color: var(--ink); }
 
@@ -68,8 +65,8 @@ https://akhemiri081.github.io/portfolio/
   .hero-left { grid-column: 1; grid-row: 1; align-self: start; }
 
   .hero-eyebrow {
-    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 2rem;
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 2rem; font-weight: 500;
     display: flex; align-items: center; gap: 1rem;
     opacity: 0; animation: fadeUp 0.8s 0.1s ease forwards;
   }
@@ -92,28 +89,29 @@ https://akhemiri081.github.io/portfolio/
   }
   .hero-badge {
     writing-mode: vertical-rl;
-    font-size: 0.63rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--muted); padding: 1.5rem 0.8rem;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); padding: 1.5rem 0.8rem; font-weight: 500;
     border: 1px solid var(--border); border-radius: 2px; margin-bottom: 2rem;
   }
   .hero-intro {
-    max-width: 300px; text-align: right;
-    font-size: 0.92rem; line-height: 1.85; color: var(--muted);
+    max-width: 320px; text-align: right;
+    font-size: 1rem; line-height: 1.8; color: var(--muted);
   }
-  .hero-intro strong { color: var(--ink); font-weight: 500; }
+  .hero-intro strong { color: var(--ink); font-weight: 600; }
 
   .hero-bottom {
     grid-column: 1; grid-row: 2;
     display: flex; align-items: center; gap: 3rem; padding-top: 4rem;
     opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards;
   }
-  .hero-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+  .hero-stat { display: flex; flex-direction: column; gap: 0.4rem; }
   .hero-stat .num {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em;
   }
   .hero-stat .lbl {
-    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
   }
   .hero-divider { width: 1px; height: 44px; background: var(--border); }
 
@@ -123,25 +121,25 @@ https://akhemiri081.github.io/portfolio/
   }
 
   /* SECTIONS */
-  section { padding: 6rem 5vw; border-bottom: 1px solid var(--border); }
+  section { padding: 5rem 5vw; border-bottom: 1px solid var(--border); }
 
   .section-header {
-    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem;
+    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem;
   }
   .section-num {
     font-family: 'Playfair Display', serif;
-    font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--sand);
+    font-size: 0.85rem; font-style: italic; font-weight: 400; color: var(--sand);
   }
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: -0.02em; line-height: 1.15;
   }
 
   /* TIMELINE */
   .timeline { display: flex; flex-direction: column; }
   .tl-item {
-    display: grid; grid-template-columns: 200px 1px 1fr;
+    display: grid; grid-template-columns: 220px 1px 1fr;
     gap: 0 3rem; padding: 2.5rem 0;
     border-top: 1px solid var(--border);
     opacity: 0; transform: translateY(18px);
@@ -149,26 +147,28 @@ https://akhemiri081.github.io/portfolio/
   }
   .tl-item.visible { opacity: 1; transform: translateY(0); }
   .tl-date {
-    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); padding-top: 0.2rem; line-height: 1.7;
+    font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted); padding-top: 0.2rem; line-height: 1.7; font-weight: 500;
   }
   .tl-line { background: var(--border); position: relative; }
   .tl-line::before {
     content: ''; position: absolute; top: 8px; left: 50%;
     transform: translateX(-50%);
-    width: 7px; height: 7px; border-radius: 50%;
-    border: 1.5px solid var(--ink); background: var(--bg);
+    width: 8px; height: 8px; border-radius: 50%;
+    border: 2px solid var(--ink); background: var(--bg);
   }
   .tl-content { padding-left: 1rem; }
   .tl-role {
     font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; margin-bottom: 0.25rem;
+    font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: 0.3rem;
   }
   .tl-company {
-    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.8rem;
+    font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.8rem; font-weight: 500;
   }
-  .tl-desc { font-size: 0.88rem; line-height: 1.8; color: var(--muted); max-width: 520px; }
+  .tl-desc {
+    font-size: 0.97rem; line-height: 1.8; color: var(--muted); max-width: 520px;
+  }
 
   /* FORMATION */
   .edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
@@ -192,20 +192,20 @@ https://akhemiri081.github.io/portfolio/
     color: var(--sand-light); line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.04em;
   }
   .edu-year {
-    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.5rem;
+    font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem; font-weight: 500;
   }
   .edu-title {
     font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em;
-    line-height: 1.3; margin-bottom: 0.3rem;
+    font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em;
+    line-height: 1.3; margin-bottom: 0.4rem;
   }
-  .edu-school { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.4rem; }
+  .edu-school { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.4rem; font-weight: 400; }
   .edu-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .edu-tag {
-    font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
     border: 1px solid var(--border); border-radius: 2px;
-    padding: 0.22rem 0.65rem; color: var(--muted);
+    padding: 0.28rem 0.75rem; color: var(--muted); font-weight: 500;
     transition: border-color 0.2s, color 0.2s;
   }
   .edu-tag:hover { border-color: var(--sand); color: var(--ink); }
@@ -213,27 +213,28 @@ https://akhemiri081.github.io/portfolio/
   /* COMPÉTENCES */
   .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
   .skills-col h3 {
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 1.5rem;
+    font-size: 0.76rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink); font-weight: 600; margin-bottom: 1.5rem;
     padding-bottom: 1rem; border-bottom: 1px solid var(--border);
   }
   .tech-list { list-style: none; }
   .tech-list li {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
-    font-size: 0.88rem; transition: padding-left 0.2s;
+    padding: 0.95rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.97rem; font-weight: 400; transition: padding-left 0.2s;
   }
   .tech-list li:hover { padding-left: 0.4rem; }
-  .dot-group { display: flex; gap: 4px; }
-  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sand-light); border: 1px solid var(--sand); }
+  .dot-group { display: flex; gap: 5px; flex-shrink: 0; margin-left: 1rem; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sand-light); border: 1.5px solid var(--sand); }
   .dot.filled { background: var(--ink); border-color: var(--ink); }
 
   .soft-list { list-style: none; }
   .soft-list li {
     display: flex; gap: 1rem; align-items: center;
-    padding: 0.85rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    padding: 0.95rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.97rem; font-weight: 400;
   }
-  .soft-list li::before { content: '—'; color: var(--sand); font-size: 0.75rem; flex-shrink: 0; }
+  .soft-list li::before { content: '—'; color: var(--sand); font-size: 0.85rem; flex-shrink: 0; }
 
   /* CONTACT */
   .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
@@ -247,16 +248,16 @@ https://akhemiri081.github.io/portfolio/
   .contact-list li a,
   .contact-list li > div {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.3rem 0; border-bottom: 1px solid var(--border);
-    text-decoration: none; color: var(--ink); font-size: 0.9rem;
+    padding: 1.4rem 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--ink); font-size: 1rem; font-weight: 400;
     transition: padding-right 0.2s;
   }
   .contact-list li a:hover { padding-right: 0.5rem; }
   .c-label {
-    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--muted); display: block; margin-bottom: 0.2rem;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); display: block; margin-bottom: 0.25rem; font-weight: 500;
   }
-  .c-arrow { color: var(--muted); transition: transform 0.2s, color 0.2s; }
+  .c-arrow { color: var(--muted); transition: transform 0.2s, color 0.2s; font-size: 1.1rem; }
   .contact-list li a:hover .c-arrow { transform: translateX(4px); color: var(--ink); }
 
   /* FOOTER */
@@ -264,10 +265,10 @@ https://akhemiri081.github.io/portfolio/
     padding: 1.8rem 5vw; background: var(--white);
     display: flex; justify-content: space-between; align-items: center;
   }
-  footer p { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  footer p { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
   footer .f-name {
     font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 0.85rem; color: var(--ink); letter-spacing: -0.01em;
+    font-weight: 700; font-size: 0.95rem; color: var(--ink); letter-spacing: -0.01em;
     text-transform: none;
   }
 
@@ -280,7 +281,7 @@ https://akhemiri081.github.io/portfolio/
     .hero-badge { writing-mode: horizontal-tb; }
     .hero-intro { text-align: left; }
     .hero-bottom { grid-row: 3; }
-    section { padding: 4rem 1.5rem; }
+    section { padding: 3.5rem 1.5rem; }
     .tl-item { grid-template-columns: 1fr; gap: 0.4rem; }
     .tl-line { display: none; }
     .edu-row, .skills-layout, .contact-wrap { grid-template-columns: 1fr; }
@@ -304,7 +305,7 @@ https://akhemiri081.github.io/portfolio/
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Portfolio · 2025</p>
+    <p class="hero-eyebrow">Portfolio · 2026</p>
     <h1 class="hero-name">Mohamed<br><em>Khemiri</em></h1>
   </div>
 
@@ -317,7 +318,7 @@ https://akhemiri081.github.io/portfolio/
 
   <div class="hero-bottom">
     <div class="hero-stat">
-      <span class="num" style="font-size:1.5rem;">27 jan. 2006</span>
+      <span class="num" style="font-size:1.6rem;">27 jan. 2006</span>
       <span class="lbl">Date de naissance</span>
     </div>
     <div class="hero-divider"></div>
@@ -341,12 +342,12 @@ https://akhemiri081.github.io/portfolio/
   </div>
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-date">Janv. – Févr. 2026<br>8 semaines</div>
+      <div class="tl-date">5 janv. – 27 févr. 2026<br>8 semaines</div>
       <div class="tl-line"></div>
       <div class="tl-content">
         <p class="tl-role">Informaticien</p>
         <p class="tl-company">Xtrem Pro · Senonches</p>
-        <p class="tl-desc">Stage du 5 janvier au 27 février 2026 en tant qu'informaticien au sein de la société Xtrem Pro.</p>
+        <p class="tl-desc">Stage en tant qu'informaticien au sein de la société Xtrem Pro.</p>
       </div>
     </div>
     <div class="tl-item">
@@ -392,7 +393,7 @@ https://akhemiri081.github.io/portfolio/
       <h3 class="edu-title">BTS SIO — Option SISR</h3>
       <p class="edu-school">Lycée Fulbert · Chartres</p>
       <div class="edu-tags">
-        <span class="edu-tag">Systeme</span>
+        <span class="edu-tag">Système</span>
         <span class="edu-tag">Cybersécurité</span>
         <span class="edu-tag">Réseau</span>
       </div>
@@ -483,12 +484,12 @@ https://akhemiri081.github.io/portfolio/
 <footer>
   <p class="f-name">Mohamed Khemiri</p>
   <p>BTS SIO · SISR</p>
-  <p>© 2025</p>
+  <p>© 2026</p>
 </footer>
 
 <script>
   const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
+    entries.forEach((e) => {
       if (e.isIntersecting) {
         const d = parseInt(e.target.dataset.delay || 0);
         setTimeout(() => e.target.classList.add('visible'), d);
@@ -499,7 +500,6 @@ https://akhemiri081.github.io/portfolio/
   document.querySelectorAll('.tl-item').forEach((el, i) => { el.dataset.delay = i * 120; obs.observe(el); });
   document.querySelectorAll('.edu-card').forEach((el, i) => { el.dataset.delay = i * 140; obs.observe(el); });
 
-  // Nav active
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
