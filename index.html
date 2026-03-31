@@ -83,7 +83,7 @@
     grid-column: 2; grid-row: 1 / 3;
     display: flex; flex-direction: column;
     justify-content: flex-end; align-items: flex-end;
-    padding-left: 4rem; padding-bottom: 0.5rem;
+    padding-left: 4rem; padding-bottom: 0.5rem; padding-top: 26rem;
     opacity: 0; animation: fadeUp 0.8s 0.45s ease forwards;
   }
   .hero-badge {
@@ -274,12 +274,12 @@
   /* HERO PHOTO */
   .hero-photo-wrap {
     position: absolute;
-    bottom: 6rem; right: 5vw;
+    top: 8rem; right: 5vw;
     z-index: 1;
     opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
   }
   .hero-photo {
-    width: 210px; height: 265px;
+    width: 260px; height: 320px;
     object-fit: cover; object-position: top center;
     border-radius: 2px;
     filter: grayscale(10%);
@@ -288,7 +288,7 @@
   }
   .hero-photo-frame {
     position: absolute; top: 10px; left: 10px;
-    width: 210px; height: 265px;
+    width: 260px; height: 320px;
     border: 1px solid var(--sand); border-radius: 2px;
     z-index: -1;
   }
@@ -488,8 +488,8 @@
     <h2 class="contact-heading">Travaillons<br><em>ensemble.</em></h2>
     <ul class="contact-list">
       <li>
-        <a href="mailto:akhemiri081@gmail.com">
-          <div><span class="c-label">Email</span>akhemiri081@gmail.com</div>
+        <a href="/cdn-cgi/l/email-protection#2c4d47444941455e451c141d6c4b414d4540024f4341">
+          <div><span class="c-label">Email</span><span class="__cf_email__" data-cfemail="c3a2a8aba6aeaab1aaf3fbf283a4aea2aaafeda0acae">[email&#160;protected]</span></div>
           <span class="c-arrow">→</span>
         </a>
       </li>
@@ -514,7 +514,7 @@
   <p>© 2026</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
@@ -529,11 +529,4 @@
 
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) cur = s.id; });
-    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--ink)' : ''; });
-  });
-</script>
-</body>
-</html>
+  window.addEventListener('scroll'
